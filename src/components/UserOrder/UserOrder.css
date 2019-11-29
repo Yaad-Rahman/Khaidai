@@ -1,0 +1,21 @@
+.userOrder {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+    background-image: url('../../orderPage.jpg');
+    filter: blur(3px);
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+}
+
+.orderForm {
+    width: 50%;
+    height: 50%;
+    margin: auto;
+    margin-top: 300px;
+    background-image: url('../../treeBackground.png');
+
+}
