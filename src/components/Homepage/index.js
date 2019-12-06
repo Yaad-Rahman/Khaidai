@@ -6,42 +6,39 @@ import Contact from './Contact';
 import Footer from './Footer';
 import Enquiry from './Enquiry';
 import Menu from './Menu';
-import { Grid } from '@material-ui/core';
+import { connect } from 'react-redux';
+import {fetchProducts} from '../../actions';
 
 
 class Home extends React.Component {
+    state={
+        cartItems: []
+    }
+    componentDidMount() {
+        this.props.fetchProducts();
+        
+    }
+
+    renderList() {
+        return this.props.products.map(p =>
+            <Menu key={p.id} {...p} item={p} />)
+
+    } 
+
     render() {
+        console.log(this.props.products);
         return (
             <div>
                 <HeaderTab />
-                <img src="foodBackground.jpg" width="100%" height="716px" id="foodImg"/>
-                <img src="Rectangle.png" width="100%" id="brownBackground" />
-                <div className="boyan">Select the best menu for your delight!</div>
+                <div className="boyan">
+                    <h2 id="boyanHeading" >Select the best menu for your delight!</h2>
                 <MenuList />
-                <Grid container
-                alignContent='center'
-                justify='center'
-                zeroMinWidth
-                className="menuItemList" spacing={2}>
-                    <Grid item xs={4}>
-                    <Menu
-                name="baal"
-                pic="chat" />
-                    </Grid>
-                    <Grid item xs={4}>
-                    <Menu
-                name="baal"
-                pic="chat" />
-                    </Grid>
-                    <Grid item xs={4}>
-                    <Menu
-                name="baal"
-                pic="chat" />
-                    </Grid>
-                </Grid>
-                
-    
+                </div>
+                <div className="menuItemList">
+                      {this.renderList()}
+                </div>                    
                 <Contact />
+                
                 <Enquiry />
                 <Footer />
             </div>
@@ -49,4 +46,8 @@ class Home extends React.Component {
     }
 }
 
-export default Home;
+const mapStateToProps =  (state) => {
+    return { products: Object.values(state.products) };
+};
+
+export default connect(mapStateToProps, {fetchProducts}) (Home);

@@ -1,18 +1,36 @@
 import React from 'react';
 import {Paper} from '@material-ui/core';
+import {connect} from 'react-redux';
 
-const Menu = (props) => {
-    console.log(props);
+const Menu = ({id, title, description, img, price, item}) => {
     return (
     <Paper className="menu">
-        <h2>Juicy beef burger</h2>
+        <h2>{title}</h2>
         <img src="./burger.png" alt="food" />
-        <p>Juicy beef burger with extra cheese that will delight your mouth. 
-            Comes with french fries and sour sause.</p>
-        <h1>$ 56.00</h1>
-        <div className="orderbtn">Order now!</div>
+        <p>{description}</p>
+        <h1>{price}</h1>
+        <div className="orderbtn"
+        onClick={() => this.props.addToCart(item)}>Order now!</div>
     </Paper>
     );
 }
 
-export default Menu;
+const mapStateToProps = (state) => {
+    return{
+        items: state.products
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addToCart: (item) => {
+            dispatch({
+                type: 'ADD_TO_CART',
+                item
+            })
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);
+
