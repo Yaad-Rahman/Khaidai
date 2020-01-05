@@ -1,36 +1,34 @@
 import React from 'react';
 import {Paper} from '@material-ui/core';
+import {addToCart} from '../../actions/cartActions';
 import {connect} from 'react-redux';
 
-const Menu = ({id, title, description, img, price, item}) => {
+
+
+  class Menu extends React. Component {
+    state={
+      trigger: false
+    }
+
+      render(){
+        let source=`http://localhost:8081${this.props.product.pImg}`
+        console.log("source", source);
+        console.log("products",this.props);
     return (
     <Paper className="menu">
-        <h2>{title}</h2>
-        <img src="./burger.png" alt="food" />
-        <p>{description}</p>
-        <h1>{price}</h1>
+        <h2>{this.props.product.pName} </h2>
+        <img src={source} alt="food" width="440.15px" height="288px" />
+        <p>{this.props.product.pDescription}</p>
+        <h1>${this.props.product.pPrice}</h1>
         <div className="orderbtn"
-        onClick={() => this.props.addToCart(item)}>Order now!</div>
+        onClick={(e)=> {this.props.addToCart(this.props.cartItems, this.props.product); alert("Item added to cart")}}
+        >Order now!</div>
     </Paper>
     );
-}
+}}
 
-const mapStateToProps = (state) => {
-    return{
-        items: state.products
-    }
-}
+const mapStateToProps = state => ({
+  cartItems: state.cart.items
+})
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addToCart: (item) => {
-            dispatch({
-                type: 'ADD_TO_CART',
-                item
-            })
-        }
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Menu);
-
+export default connect(mapStateToProps, {addToCart})(Menu);

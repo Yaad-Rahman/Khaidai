@@ -6,9 +6,12 @@ class HeaderTab extends React.Component {
     return(
       <div className="header">
         <a href="#">Home</a>
-        <a href="#">Menu</a>
+        <a href="#MenuList">Menu</a>
         <a href="#">Events & Private dining</a>
         <a href="#">Contact</a>
+        <div id="heading">
+        <img src="logogab.svg" id="logogab" /> <br/>
+         ATMC RESTRAURENT <br/> ASAD AVENUE </div>
       </div>
     )
   }

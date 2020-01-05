@@ -2,20 +2,21 @@ import React from 'react';
 import {Paper, Typography, TextField, Button} from '@material-ui/core';
 import axios from 'axios';
 import Login from './Login';
+import BasketOrder from './BasketOrder.js'
 
 
-const BASE_URL = '';
+const BASE_URL = 'http://localhost:8080/users/';
 
 class OrderTab extends React.Component {
 
 
 state= {
-    userName : '',
-    userEmail: '',
-    userPassword: '',
+    uName : '',
+    uEmail: '',
+    uPassword: '',
     confirmPassword: '',
-    userNumber: '',
-    userAddress: '',
+    uPhoneNo: '',
+    uAddress: '',
     isSubmited: false,
     nameError: '',
     nameErrorT: false,
@@ -26,6 +27,10 @@ state= {
 
     
 }
+
+
+
+
 
 changeHandler = (e) => {
     this.setState({
@@ -42,15 +47,15 @@ validate= () => {
     let passwordError="";
     let numberError= ""; 
 
-    if(!this.state.userName) {
+    if(!this.state.uName) {
         nameError= "name cannot be blank";
     }
 
-    if(this.state.userPassword !== this.state.confirmPassword) {
+    if(this.state.uPassword !== this.state.confirmPassword) {
         passwordError="Passwords didn't match";
     }
 
-    if(this.state.userNumber.length < 11) {
+    if(this.state.uPhoneNo.length < 11) {
         numberError="Not a valid Mobile Number";
     }
 
@@ -83,7 +88,7 @@ validate= () => {
 };
 
 submitHandler=(e) => {
-    console.log(this.state.userName);
+    console.log(this.state.uName);
     console.log(this.state.nameErrorT);
     console.log(this.validate());
 
@@ -93,11 +98,11 @@ submitHandler=(e) => {
     console.log(this.state);
 }
     axios.post(`${BASE_URL}`, {
-     userName: this.state.userName,
-     userEmail: this.state.userEmail,
-     userPassword: this.state.userPassword,
-     userNumber: this.state.userNumber,
-     userAddress: this.state.userAddress   
+     uName: this.state.uName,
+     uEmail: this.state.uEmail,
+     uPassword: this.state.uPassword,
+     uPhoneNo: this.state.uPhoneNo,
+     uAddress: this.state.uAddress   
     })
     .then(res => {
         this.setState({
@@ -113,82 +118,11 @@ submitHandler=(e) => {
         return(
             <div>
                 <Paper className="orderForm">
-                    <Paper>
-                        <h2>Your Order</h2>
-                    </Paper>
-                    <Typography varient='h3' align='center'>
-                        Client Information
+                    <Typography varient='h3' align='center' id="signUpHeading">
+                        SIGN UP
+                        <Login/>
                     </Typography>
-                    <Typography varient='h6' align='center'>
-                        Please fill up the form to carry out your favourite food
-                        right front of your door.
-                    </Typography>
-                    <form onSubmit={ this.submitHandler}>
-                        <Typography align='center'>
-                        <TextField
-                        error={this.state.nameErrorT}
-                        helperText={this.state.nameError}
-                        onChange={this.changeHandler}
-                        value={this.state.userName}
-                        name="userName"
-                        label="Your Name"
-                        variant="outlined" /> <br/> <br/>
-
-                        <TextField
-                        onChange={this.changeHandler}
-                        value={this.state.userEmail}
-                        name="userEmail"
-                        label="Your Email"
-                        variant="outlined"
-                        type='email' /> <br/> <br/>
-
-                        <TextField
-                        required
-                        onChange={this.changeHandler}
-                        value={this.state.userPassword}
-                        name="userPassword"
-                        label="Give a Password"
-                        variant="outlined"
-                        type="password" /> <br/> <br/>
-
-                        
-                        <TextField
-                        required
-                        error={this.state.passwordErrorT}
-                        helperText={this.state.passwordError}
-                        onChange={this.changeHandler}
-                        value={this.state.confirmPassword}
-                        name="confirmPassword"
-                        label="Confirm Password"
-                        variant="outlined"
-                        type="password" /> <br/> <br/>
-
-                        <TextField
-                        error={this.state.numberErrorT}
-                        helperText={this.state.numberError}
-                        onChange={this.changeHandler}
-                        value={this.state.userNumber}
-                        name="userNumber"
-                        label="Your Contact Number"
-                        variant="outlined"
-                        type="number" /> <br/> <br/>
-
-                        <TextField
-                        onChange={this.changeHandler}
-                        value={this.state.userAddress} 
-                        name="userAddress"
-                        label="Delivery Address"
-                        variant="outlined"
-                        multiline
-                        rowsMax="2"/><br/> <br />
-
-                        <p>Already a member ? <Login/></p> <br/> 
-                        <Button variant='contained' type='submit' style={{margin: "20px"}}>Order</Button>
-                        {this.state.isSubmited ? <p>GG done</p> : <p>failed</p>}
-                        </Typography>
-
-                        
-                    </form>
+                    
                     
                 </Paper>
 

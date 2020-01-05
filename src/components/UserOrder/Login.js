@@ -4,6 +4,7 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import {TextField, Button} from '@material-ui/core';
+import GoogleAuth from './GoogleAuth';
 
 const useStyles = makeStyles(theme => ({
   modal: {
@@ -21,7 +22,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Login(props) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const handleOpen = () => {
     setOpen(true);
@@ -33,9 +34,6 @@ export default function Login(props) {
 
   return (
     <div>
-      <a href="#" onClick={handleOpen}>
-        Log In
-      </a>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -51,28 +49,12 @@ export default function Login(props) {
         <Fade in={open}>
           <div className={classes.paper}>
             <h2>Welcome !</h2>
-            <form>
-                <TextField
-                variant='outlined'
-                label='Enter Email'
-                /> <br /> <br/>
-                <TextField
-                variant='outlined'
-                label='Enter Password'
-                type='password'
-                /> <br/> <br/>
-                <Button variant='contained'
-                color='primary'>
-                    Log In
-                </Button>
+            <GoogleAuth />
                 <Button variant='contained'
                 color='secondary'
                 onClick={handleClose} >
                     Cancel
                 </Button>
-
-
-            </form>
           </div>
         </Fade>
       </Modal>

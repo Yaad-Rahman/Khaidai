@@ -4,15 +4,20 @@ import App from './components/App';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import reducers from './reducers';
-import { compose } from '@material-ui/system';
+import {composeWithDevTools} from 'redux-devtools-extension';
 import reduxThunk from 'redux-thunk';
+const initialState = {};
+if (localStorage.getItem('cartItems')){
+    initialState.cart = {
+        items: JSON.parse(localStorage.getItem('cartItems'))
+    }
+}
 
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store=createStore(
-    reducers,
-    composeEnhancers(applyMiddleware(reduxThunk))
-    );
+    reducers, initialState,
+    composeWithDevTools(applyMiddleware(reduxThunk))
+);
 
 
 ReactDOM.render(
