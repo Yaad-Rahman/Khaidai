@@ -5,18 +5,21 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import {TextField, Button} from '@material-ui/core';
 import GoogleAuth from './GoogleAuth';
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   modal: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    pointerEvents: 'none',
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+    pointerEvents: 'auto',
   },
 }));
 
@@ -48,11 +51,13 @@ export default function Login(props) {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h2>Welcome !</h2>
+            <h2 style={{textAlign: 'center', margin: '10px'}}>Welcome !</h2>
+            <p style={{margin: '10px'}}>To continue, Please Sign In </p>
             <GoogleAuth />
                 <Button variant='contained'
                 color='secondary'
-                onClick={handleClose} >
+                onClick={handleClose}
+                style={{marginTop: '10px'}} >
                     Cancel
                 </Button>
           </div>

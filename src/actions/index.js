@@ -1,9 +1,10 @@
 import products from '../apis/products';
 
-export const signIn = (userId) => (
+export const signIn = (userId, userName) => (
     {
         type: 'SIGN_IN',
-        paload: userId
+        payload: userId,
+        userName: userName
     }
 );
 

@@ -21,7 +21,8 @@ class GoogleAuth extends React.Component {
 
     onAuthChange = (isSignedIn) => {
         if (isSignedIn) {
-            this.props.signIn(this.auth.currentUser.get().getId());
+            this.props.signIn(this.auth.currentUser.get().getId(),
+            this.auth.currentUser.get().getBasicProfile().ig);
         }
         else {
             this.props.signOut();
@@ -35,6 +36,7 @@ class GoogleAuth extends React.Component {
     onSignOut = () => {
         this.auth.signOut();
     }
+
 
     renderAuthButton() {
         if(this.props.isSignedIn === null) {
@@ -64,7 +66,8 @@ class GoogleAuth extends React.Component {
         }
     }
 
-    render() {
+    render()
+    {
         return <div>{this.renderAuthButton()}</div>
     }
 }
