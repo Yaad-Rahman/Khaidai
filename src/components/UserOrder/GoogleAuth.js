@@ -48,7 +48,7 @@ class GoogleAuth extends React.Component {
                 color="secondary"
                 onClick={this.onSignOut}
                 >
-                    <img src="./googlebtn.svg" alt="btn" />
+                    <img src="./googlebtn1.svg" alt="btn" />
                     Sign Out
                 </Button>
             )
@@ -59,7 +59,7 @@ class GoogleAuth extends React.Component {
                 color="primary"
                 onClick={this.onSignIn}
                 >
-                    <img src="./googlebtn.svg" alt="btn" />
+                    <img src="./googlebtn1.svg" alt="btn" />
                     Sign In With Google
                 </Button>
             )

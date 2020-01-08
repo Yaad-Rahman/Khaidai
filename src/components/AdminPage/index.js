@@ -1,45 +1,35 @@
 import React from 'react';
 import AdminBar from './Appbar';
 import './AdminPage.css';
-import {TextField, Button} from '@material-ui/core';
+import {connect} from 'react-redux';
+import Verification from './Verification';
 
 
 class AdminPage extends React.Component {
-  state= {
-    code: ''
-  }
-
-  changeHandler = (e) => {
-      this.setState({
-          [e.target.name] : e.target.value
-
-      })
-  }
-
-  submitHandler = (e) => {
-      e.preventDefault();
-    }
 
   renderConfig = () => {
-    return(
-      <form>
-      <TextField label="Access Code" value={this.state.code}
-      onChange={this.changeHandler} />
-      <Button variant="contained" color="primary"
-      onClick={this.submitHandler} type="submit">
-      Get Access
-      </Button>
-      </form>
-    )
+    if(this.props.userId === "101150327305404523009")
+      return <AdminBar />
+    else
+      return <Verification />
+
   }
 
   render() {
+    console.log("userId", this.props);
     return (
       <div>
-      <AdminBar />
+      {this.renderConfig()}
+
       </div>
     )
   };
 };
 
-export default AdminPage;
+const mapStateToProps = (state) => {
+  return {
+    userId: state.auth.userId
+  }
+}
+
+export default connect(mapStateToProps)(AdminPage);
