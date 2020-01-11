@@ -47,13 +47,14 @@ class AdminNew extends React.Component {
 
         axios.post('http://localhost:8080/Products/', fd, config)
         .then(res => {
-            console.log(res);
+            console.log("response",res);
+            this.setState({isSubmitted: true});
         })
         .catch (err => {
             console.log(err);
         })
         console.log("fd",fd)
-        console.log(this.state);
+        console.log("stae", this.state);
 
 
 

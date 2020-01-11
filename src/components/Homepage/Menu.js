@@ -11,7 +11,7 @@ import {connect} from 'react-redux';
     }
 
       render(){
-        let source=`http://localhost:8081${this.props.product.pImg}`
+        let source=`http://0.0.0.0:8000${this.props.product.pImg}`
         console.log("source", source);
         console.log("products",this.props);
     return (
