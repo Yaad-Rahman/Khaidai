@@ -1,8 +1,9 @@
 import React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {Router, Route} from 'react-router-dom';
 import Home from './Homepage';
 import UserOrder from './UserOrder';
 import AdminPage from './AdminPage';
+import history from '../reducers/history';
 
 
 const HomePage = () => (
@@ -19,14 +20,14 @@ const Admin=() => (
 
 
 const App = () => (
-    <BrowserRouter>
+    <Router forceRefresh={true} history={history}>
     <div>
         <Route path="/" exact component={HomePage} />
         <Route path="/orders" exact component={Order} />
         <Route path="/admin" exact component={Admin} />
     </div>
-        
-    </BrowserRouter>
+
+    </Router>
 )
 
 export default App;

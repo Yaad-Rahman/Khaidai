@@ -276,6 +276,11 @@ padding: 20px;
 
 }
 
+#menuImg {
+  width:440.15px;
+  height:288px;
+}
+
 .menu h2 {
     font-family: Rosario;
 font-style: normal;
@@ -397,4 +402,48 @@ font-weight: normal;
 text-align: center;
 letter-spacing: 1px;
 text-transform: uppercase;
+}
+
+
+
+@media screen and (max-width: 411px) {
+  .menuItemList {
+    display: block;
+    max-width: 400px;
+  }
+  .MenuList{
+    display: block;
+  }
+  .boyan {
+    height:100%;
+    width: 100%;
+  }
+  .menu{
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  #menuImg {
+    width: 100%;
+  }
+  .inquiry {
+    display: block;
+  }
+  .contactDetails{
+    width: 100%;
+    height: 500px;
+    margin-bottom: 10px;
+  }
+  .inquiryForm {
+    width: 100%;
+    height: 600px;
+  }
+  .footer {
+    display: block;
+    height: 335px;
+  }
+  #facebook{
+    padding: 0;
+  }
+
 }

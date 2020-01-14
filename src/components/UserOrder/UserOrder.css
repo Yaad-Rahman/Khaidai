@@ -67,3 +67,12 @@ text-transform: uppercase;
     padding: 10px;
     min-width: 650px;
 }
+
+.arrive {
+  margin: 10px;
+  padding-left: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+
+}

@@ -17,7 +17,7 @@ import {connect} from 'react-redux';
     return (
     <Paper className="menu">
         <h2>{this.props.product.pName} </h2>
-        <img src={source} alt="food" width="440.15px" height="288px" />
+        <img src={source} alt="food" id="menuImg" />
         <p>{this.props.product.pDescription}</p>
         <h1>${this.props.product.pPrice}</h1>
         <div className="orderbtn"

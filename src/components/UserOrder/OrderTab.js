@@ -47,6 +47,7 @@ class OrderTab extends React.Component {
               console.log("response",res);
               this.setState({isSubmitted: true});
               localStorage.clear();
+              window.setInterval(this.historyFunc, 3000);
 
           })
           .catch (err => {
@@ -61,6 +62,7 @@ class OrderTab extends React.Component {
 
     historyFunc = () => {
       history.push('/');
+      window.location.reload(false);
     }
 
 
@@ -77,7 +79,7 @@ class OrderTab extends React.Component {
                 Hi, {this.props.userName}
                 </h2>
                 <BasketOrder />
-                <Paper>
+                <Paper className="arrive">
                 <h2>Call before arrive ? </h2>
                 <Switch
                 checked={this.state.checkedA}
@@ -86,14 +88,14 @@ class OrderTab extends React.Component {
                 inputProps={{ 'aria-label': 'secondary checkbox' }}
                 />
 
-                </Paper>
+                </Paper >
 
                 <button className="orderFormBtn"
                 onClick={this.submitHandler}
                 >
                 Confirm Order
                 </button>
-                <button className="orderFormBtn">
+                <button className="orderFormBtn" onClick={this.historyFunc}>
                 Cancel
                 </button>
 
@@ -106,13 +108,7 @@ class OrderTab extends React.Component {
                 open= {this.state.isSubmitted}
                 autoHideDuration={4000}
                 message="Your order placed successfully"
-                action = {
-                  <React.Fragment>
-                  <Button color="secondary" size="small" onClick={this.historyFunc}>
-                  Back to Homepage
-                  </Button>
-                  </React.Fragment>
-                }
+
                 />
 
 
