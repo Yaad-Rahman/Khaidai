@@ -76,3 +76,16 @@ text-transform: uppercase;
   grid-gap: 20px;
 
 }
+
+
+
+@media screen and (max-width: 411px) {
+  .basketorder {
+    min-width: 411px;
+    padding: 0;
+  }
+  .orderForm {
+    min-width: 411px;
+
+  }
+}

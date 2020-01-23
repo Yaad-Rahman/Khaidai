@@ -10,7 +10,6 @@ class HeaderTab extends React.Component {
         <a href="#">Events & Private dining</a>
         <a href="#">Contact</a>
         <div id="heading">
-        <img src="logogab.svg" id="logogab" /> <br/>
          ATMC RESTRAURENT <br/> ASAD AVENUE </div>
       </div>
     )

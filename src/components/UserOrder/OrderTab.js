@@ -106,7 +106,7 @@ class OrderTab extends React.Component {
                   horizontal: 'left',
                 }}
                 open= {this.state.isSubmitted}
-                autoHideDuration={4000}
+                autoHideDuration={10000}
                 message="Your order placed successfully"
 
                 />

@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 
 
 
-  class Menu extends React. Component {
+  class Menu extends React.Component {
     state={
       trigger: false
     }
